@@ -333,6 +333,7 @@ def carousel():
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            
             <link rel="stylesheet" type="text/css" href="{url_style}" />
             <title>Варианты выбора</title>
           </head>
@@ -369,8 +370,45 @@ def carousel():
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+            
+            
+            
+            
+            
           <body>
         </html>'''
+
+
+@app.route('/load_photo', methods=['GET', 'POST'])
+def load_photo():
+    url_style = url_for('static', filename='css/style.css')
+    if request.method == 'GET':
+        return f'''<!doctype html>
+                    <html lang="en">
+                      <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+                        
+                        <link rel="stylesheet" type="text/css" href="{url_style}" />
+                        <title>Отбор астронавтов</title>
+                      </head>
+                      <body>
+                        <h1 align="center">Загрузка фотографии</h1>
+                        <h4 align="center">для участия в мисии</h4>
+                        <div>
+                            <form class="login_form" method="post">
+                                <div class="form-group">
+                                    <label for="photo">Приложите фотографию</label>
+                                    <input type="file" class="form-control-file" id="photo" name="file">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Отправить</button>
+                            </form>
+                        </div>
+                      </body>
+                    </html>'''
+    elif request.method == 'POST':
+        return
 
 
 if __name__ == '__main__':
